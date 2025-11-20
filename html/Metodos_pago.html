@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <title>Métodos de Pago - Tienda Online</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Selecciona tu método de pago</h1>
+            <p>Elige la opción más conveniente para ti</p>
+        </div>
+
+        <div class="main-content">
+            
+            <section class="payment-section">
+                <h2>Métodos disponibles</h2>
+                <div class="payment-methods">
+                   
+                    <label class="payment-card tarjeta">
+                        <input type="radio" name="payment-method" value="tarjeta">
+                        <div class="payment-icon">💳</div>
+                        <div class="payment-name">Tarjeta de Crédito</div>
+                        <div class="payment-desc">Visa, Mastercard, Amex</div>
+                        <span class="payment-badge">Rápido</span>
+                    </label>
+
+                    
+                    <label class="payment-card billetera">
+                        <input type="radio" name="payment-method" value="billetera">
+                        <div class="payment-icon">📱</div>
+                        <div class="payment-name">Billetera Digital</div>
+                        <div class="payment-desc">Google Pay, Apple Pay</div>
+                        <span class="payment-badge">Seguro</span>
+                    </label>
+
+                    
+                    <label class="payment-card transferencia">
+                        <input type="radio" name="payment-method" value="transferencia">
+                        <div class="payment-icon">🏦</div>
+                        <div class="payment-name">Transferencia Bancaria</div>
+                        <div class="payment-desc">Desde tu cuenta bancaria</div>
+                        <span class="payment-badge">Económico</span>
+                    </label>
+
+                    <label class="payment-card paypal">
+                        <input type="radio" name="payment-method" value="paypal">
+                        <div class="payment-icon">🅿️</div>
+                        <div class="payment-name">PayPal</div>
+                        <div class="payment-desc">Cuenta PayPal verificada</div>
+                        <span class="payment-badge">Confiable</span>
+                    </label>
+                </div>
+            </section>
+            
+            <aside class="summary-section">
+                <h3>Resumen de tu pedido</h3>
+                
+                <div class="summary-item">
+                    <span class="summary-label">Subtotal</span>
+                    <span class="summary-value">$299.99</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">Impuestos</span>
+                    <span class="summary-value">$29.99</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">Envío</span>
+                    <span class="summary-value">$10.00</span>
+                </div>
+
+                <div class="summary-divider"></div>
+
+                <div class="summary-total">
+                    <span class="summary-label">Total</span>
+                    <span class="summary-value">$339.98</span>
+                </div>
+
+                <button class="checkout-btn">Proceder al pago</button>
+
+                <p class="info-text">Tu pago es seguro y está protegido</p>
+
+                <div class="guarantees">
+                    <div class="guarantee-item">
+                        <span class="guarantee-icon">✓</span>
+                        <span>Pago 100% seguro</span>
+                    </div>
+                    <div class="guarantee-item">
+                        <span class="guarantee-icon">✓</span>
+                        <span>Garantía de devolución</span>
+                    </div>
+                    <div class="guarantee-item">
+                        <span class="guarantee-icon">✓</span>
+                        <span>Soporte 24/7</span>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <script>
+        const paymentCards = document.querySelectorAll('.payment-card');
+        
+        paymentCards.forEach(card => {
+            card.addEventListener('click', () => {
+                paymentCards.forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+                card.querySelector('input').checked = true;
+            });
+        });
+
+        const checkoutBtn = document.querySelector('.checkout-btn');
+        checkoutBtn.addEventListener('click', () => {
+            const selected = document.querySelector('input[name="payment-method"]:checked');
+            if (selected) {
+                alert(`Procesando pago con: ${selected.value}`);
+            } else {
+                alert('Por favor selecciona un método de pago');
+            }
+        });
+    </script>
+</body>
+</html>
