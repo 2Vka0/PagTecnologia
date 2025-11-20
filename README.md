@@ -1,2 +1,0 @@
-# PagTecnologia
-# PagTecnologia
